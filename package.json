@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "royal-park-ladies-golf-club",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.1.7"
+    "@astrojs/sitemap": "^3.2.1",
+    "@picocss/pico": "^2.0.6",
+    "@splidejs/splide": "^4.1.4",
+    "astro": "^5.1.7",
+    "sass": "1.77.6"
   }
 }
