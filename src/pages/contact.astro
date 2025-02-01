@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import ContactForm from "../components/ContactFormNetlify.astro";
+const pageTitle = "Contact Us";
+---
+
+<Layout pageTitle={pageTitle}>
+  <div class="container">
+    <article>
+      <p>New members are always welcome at our club.</p>
+      <p>
+        If you wish to contact us please phone the secretary, Sue O'Brien: <br
+        />
+        M: 041 9873 054<br />
+        Email: susankobrien@gmail.com <br />
+        or write to:<br />
+        The Secretary Royal Park Ladies Golf Club <br />
+        11 Old Poplar Rd<br />
+        Parkville 3052
+      </p>
+      <p>
+        or visit the club rooms any Tuesday after 12:30pm and speak to one of
+        the Committee members.
+      </p>
+    </article>
+  </div>
+  <article class="grid">
+    <div>
+      <h2 style="text-align: center">Contact Form</h2>
+      <ContactForm />
+    </div>
+    <div>
+      <h2 style="text-align: center">Location</h2>
+      <article class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25225.308124237297!2d144.93741824335228!3d-37.78620755280484!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65cd2011a986b%3A0xf04567605305a20!2sRoyal%20Park%20Golf%20Course!5e0!3m2!1sen!2sus!4v1738386442831!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </article>
+    </div>
+  </article>
+</Layout>
+<style lang="scss">
+  h1 {
+    text-align: center;
+  }
+  .map {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+  }
+  .map iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0;
+  }
+</style>

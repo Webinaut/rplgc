@@ -1,0 +1,280 @@
+/**
+ * Theme: custom
+ */
+@use "sass:map";
+@use "@picocss/pico/scss/settings" as *;
+// Styles
+@use "@picocss/pico/scss/themes/default/styles";
+// Variables
+@import "themes/custom-colors";
+// Font
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+:root {
+  #{$css-var-prefix}font-family: "Source Sans 3", serif;
+  #{$css-var-prefix}border-radius: 0.25rem;
+  #{$css-var-prefix}border-width: 1px;
+  #{$css-var-prefix}form-element-spacing-vertical: 1rem;
+  #{$css-var-prefix}form-element-spacing-horizontal: 1.25rem;
+  #{$css-var-prefix}font-size: 16px;
+  #{$css-var-prefix}block-spacing-vertical: 3rem;
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+  #{$css-var-prefix}nav-link-spacing-vertical: 0.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  #{$css-var-prefix}font-family: "Playfair Display", serif;
+  #{$css-var-prefix}font-weight: 600;
+  margin-top: var(--pico-typography-spacing-vertical);
+}
+
+h1 {
+  #{$css-var-prefix}font-size: 2.5rem;
+  #{$css-var-prefix}typography-spacing-vertical: 2.5rem;
+}
+
+h2 {
+  #{$css-var-prefix}font-size: 2rem;
+  #{$css-var-prefix}typography-spacing-vertical: 2rem;
+}
+
+h3 {
+  #{$css-var-prefix}font-size: 1.75rem;
+  #{$css-var-prefix}typography-spacing-vertical: 1.75rem;
+}
+
+h4 {
+  #{$css-var-prefix}font-size: 1.5rem;
+  #{$css-var-prefix}typography-spacing-vertical: 1.5rem;
+}
+
+h5 {
+  #{$css-var-prefix}font-size: 1.25rem;
+  #{$css-var-prefix}typography-spacing-vertical: 1.25rem;
+}
+
+button,
+button[type="submit"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+a[role="button"] {
+  color: var(--pico-primary-inverse);
+  background-color: var(--pico-primary-focus);
+  #{$css-var-prefix}font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.5em;
+  &:hover {
+    color: var(--pico-primary-focus);
+    background-color: var(--pico-primary-inverse);
+    --shadow-color: 0deg 0% 0%;
+    box-shadow: 0.3px 0.5px 0.8px hsl(var(--shadow-color) / 0.07),
+      1.2px 2.3px 3.4px -0.4px hsl(var(--shadow-color) / 0.11),
+      2.6px 5.2px 7.7px -0.8px hsl(var(--shadow-color) / 0.15),
+      5.8px 11.6px 17.1px -1.2px hsl(var(--shadow-color) / 0.18);
+  }
+}
+// Splide Pagination Styles
+button[role="tab"] {
+  padding: 0 1em;
+  background-color: var(--pico-color);
+  border-radius: 10%;
+  border: none;
+  margin: 0.5em 1em;
+  &.is-active {
+    background-color: var(--pico-primary-hover-background);
+  }
+}
+// Astro Styles
+.container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--pico-color);
+  padding: 20px;
+}
+.main-nav {
+  max-height: 100px;
+  & img {
+    max-height: 160px;
+    object-fit: contain;
+    max-width: max-content;
+    padding: 0.8em 1em;
+  }
+  & li {
+    font-size: 1.2em;
+    padding: 2em 1em;
+    overflow: hidden;
+  }
+}
+
+.main-nav ul li:not(:first-child) label.drop-icon:hover,
+.main-nav ul li:not(:first-child) a:hover {
+  position: relative;
+  cursor: pointer;
+  color: var(--pico-primary-hover);
+}
+
+.main-nav ul li:not(:first-child) a:before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -1px;
+  left: 50%;
+  background-color: var(--pico-primary-hover);
+}
+
+.main-nav ul li a:hover:before {
+  width: 100%;
+  left: 0;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.container-fluid nav ul li {
+  padding: 0 10px;
+}
+.active {
+  color: var(--pico-primary);
+}
+.logo .active {
+  border-bottom: none;
+}
+@media only screen and (min-width: 769px) {
+  nav > ul > li > a,
+  label {
+    color: var(--pico-primary-inverse);
+    font-weight: 500;
+  }
+
+  .main-nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+    width: 10%;
+  }
+  .hamburger {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+  .logo2 {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  nav,
+  nav ul,
+  nav li {
+    display: block;
+    text-align: left;
+    background-color: var(--pico-primary-inverse);
+  }
+  nav li {
+    margin-bottom: var(--pico-nav-link-spacing-vertical);
+  }
+  // nav li [role="button"] {
+  //   background-color: var(--pico-primary-focus);
+  //   color: var(--pico-primary-inverse);
+  // }
+  /*
+    * Just a quick hamburger
+    */
+
+  .top-bar {
+    margin: 1em 1em 1em 0;
+  }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .expanded {
+    display: unset;
+  }
+  .hamburger.expanded .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.expanded .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .hamburger.expanded .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .bar {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    background: var(--pico-primary-inverse);
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  .main-nav {
+    display: none;
+  }
+  .main-nav.expanded {
+    z-index: 1;
+    padding: 0.5em;
+    border: solid var(--pico-primary-focus);
+    border-width: 2px 0 0 0;
+    box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.1);
+    display: block;
+    position: absolute;
+    top: 75px;
+    > ul {
+      padding: 0.5em;
+    }
+  }
+
+  /* Menu */
+  .main-nav ul li a {
+    color: var(--pico-primary-background);
+  }
+  .main-nav ul li a:hover {
+    color: var(--pico-primary-focus);
+  }
+  nav li:first-child a {
+    color: var(--pico-primary-inverse);
+  }
+  // nav li:not(:first-child) a.active {
+  //   color: var(--pico-text-selection-color);
+  // }
+  .main-nav ul li a.active {
+    color: var(--pico-text-selection-color);
+  }
+  nav li :where(a, [role="link"]):not(:hover),
+  label {
+    color: var(--pico-color);
+  }
+  .main-nav ul li a:before {
+    background-color: var(--pico-primary-focus);
+  }
+  .main-nav ul li:not(:first-child) label.drop-icon:hover,
+  .main-nav ul li:not(:first-child) a:hover {
+    position: relative;
+    cursor: pointer;
+    color: var(--pico-primary-focus);
+  }
+
+  .main-nav ul li:not(:first-child) a:before {
+    background-color: var(--pico-primary-focus);
+  }
+}

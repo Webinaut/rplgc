@@ -1,0 +1,17 @@
+/* Serio Verify Colours for light color scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --pico-color: #183f75;
+  --pico-text-selection-color: #29ba0f;
+  --pico-primary: #e2d076;
+  --pico-primary-background: #000000;
+  --pico-primary-underline: #425e5e;
+  --pico-primary-hover: #f9f01e;
+  // --pico-primary-hover: #817c3e;
+  --pico-primary-hover-background: #008c92;
+  --pico-primary-focus: #008c92;
+  --pico-primary-inverse: #fff;
+  // --pico-primary-inverse: #f5f5f5;
+  --pico-muted-border-color: var(--pico-primary-hover);
+}

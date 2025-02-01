@@ -1,11 +1,87 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import FrontPageLayout from "../layouts/FrontPageLayout.astro";
+import { Image } from "astro:assets";
+import fpcard1 from "../images/VGLLogo.png";
+import fpcard2 from "../images/Golf-Australia.jpg";
+import fpcard3 from "../images/RPGCLogo.png";
+const pageTitle = "Royal Park Ladies Golf Club";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<FrontPageLayout pageTitle={pageTitle}>
+  <div class="container">
+    <div class="main">
+      <article>
+        <p>
+          Royal Park Ladies Golf Club plays at Royal Park Golf Course in
+          Parkville. This nine hole course is located in the beautiful parklands
+          adjacent to the Melbourne Zoo, approximately 3 kms. from the CBD. The
+          course is easily accessed by public transport and has ample parking
+          available.
+        </p>
+        <p>
+          We hold weekly 18 hole and 9 hole competitions, on Tuesdays from
+          February to the end of November.
+        </p>
+        <p>
+          If you enjoy playing golf, you would be most welcome to join our
+          friendly and enthusiastic ladies, who range in ages and golfing
+          ability, from recent beginners to very experienced players who are
+          willing to share their knowledge and expertise.
+        </p>
+        <p>
+          For more information see our contact page or phone our secretary Sue
+          O'Brien 0419873054
+        </p>
+      </article>
+      <article>
+        <h2 style="text-align:center">Links</h2>
+        <div class="container grid">
+          <div class="fp">
+            <article>
+              <h3>Victorian Golf League</h3>
+              <p>
+                Victorian Golf League website <a href="https://www.vgl.golf/"
+                  >link.</a
+                >
+              </p>
+              <a href="https://www.vgl.golf/">
+                <Image src={fpcard1} alt="VGL" />
+              </a>
+            </article>
+          </div>
+          <div class="fp">
+            <article>
+              <h3>Golflink</h3>
+              <p>
+                Check your handicap here. <a
+                  href="https://www.golf.org.au/handicap/">Golflink</a
+                >
+              </p>
+              <a href="https://www.golf.org.au/handicap/">
+                <Image src={fpcard2} alt="Golflink" />
+              </a>
+            </article>
+          </div>
+          <div class="fp">
+            <article>
+              <h3>Royal Park Golf Course</h3>
+              <p>
+                Royal Park Golf Course website <a
+                  href="https://royalparkgolfcourse.ymca.org.au/">link.</a
+                >
+              </p>
+              <a href="https://royalparkgolfcourse.ymca.org.au/">
+                <Image src={fpcard3} alt="RPGC Website" />
+              </a>
+            </article>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</FrontPageLayout>
+<style>
+  .fp {
+    text-align: center;
+  }
+</style>

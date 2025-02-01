@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import syllabus from "../images/2024-syllabus.jpg";
+const pageTitle = "2024 Syllabus";
+---
+
+<Layout pageTitle={pageTitle}>
+  <div class="container">
+    <article><Image src={syllabus} alt="Syllabus" /></article>
+  </div>
+  <style lang="scss">
+    h1 {
+      text-align: center;
+    }
+  </style>
+</Layout>
