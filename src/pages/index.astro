@@ -1,6 +1,9 @@
 ---
 import FrontPageLayout from "../layouts/FrontPageLayout.astro";
+import Phone from "../components/MobilePhone.astro";
+import Email from "../components/Email.astro";
 import { Image } from "astro:assets";
+import FPImageStack from "../components/FPImageStack.astro";
 import fpcard1 from "../images/VGLLogo.png";
 import fpcard2 from "../images/Golf-Australia.jpg";
 import fpcard3 from "../images/RPGCLogo.png";
@@ -11,77 +14,101 @@ const pageTitle = "Royal Park Ladies Golf Club";
   <div class="container">
     <div class="main">
       <article>
-        <p>
-          Royal Park Ladies Golf Club plays at Royal Park Golf Course in
-          Parkville. This nine hole course is located in the beautiful parklands
-          adjacent to the Melbourne Zoo, approximately 3 kms. from the CBD. The
-          course is easily accessed by public transport and has ample parking
-          available.
+        <div class="grid">
+          <div class="text-block">
+            <p>
+              Royal Park Ladies Golf Club plays at Royal Park Golf Course in
+              Parkville.
+            </p>
+            <p>
+              This 9 hole course is located in the beautiful parkland adjacent
+              to the Melbourne Zoo, approximately 3 kms from the CBD.
+            </p>
+            <p>
+              This course is easily accessed by public transport and has ample
+              parking available.
+            </p>
+            <p>
+              We hold weekly 18 hole and 9 hole competitions on Tuesdays from
+              February to the end of November.
+            </p>
+            <p>
+              If you enjoy playing golf, you would be most welcome to join our
+              friendly and enthusiastic ladies, who range in ages and golfing
+              ability, from recent beginners to very experienced players who are
+              willing to share their knowledge and expertise.
+            </p>
+          </div>
+          <div><FPImageStack /></div>
+        </div>
+        <p style="margin-top: 1em;">
+          For more information see our contact page or phone our secretary, Sue
+          O'Brien:
         </p>
-        <p>
-          We hold weekly 18 hole and 9 hole competitions, on Tuesdays from
-          February to the end of November.
-        </p>
-        <p>
-          If you enjoy playing golf, you would be most welcome to join our
-          friendly and enthusiastic ladies, who range in ages and golfing
-          ability, from recent beginners to very experienced players who are
-          willing to share their knowledge and expertise.
-        </p>
-        <p>
-          For more information see our contact page or phone our secretary Sue
-          O'Brien 0419873054
+        <p style="line-height: 3em;">
+          <Phone />
+          <a href="tel:041 9873 054">041 9873 054</a><br />
+          <Email />
+          <a href="mailto:susankobrien@gmail.com">susankobrien@gmail.com</a><br
+          />
         </p>
       </article>
       <article>
         <h2 style="text-align:center">Links</h2>
         <div class="container grid">
-          <div class="fp">
-            <article>
-              <h3>Victorian Golf League</h3>
-              <p>
-                Victorian Golf League website <a href="https://www.vgl.golf/"
-                  >link.</a
-                >
-              </p>
-              <a href="https://www.vgl.golf/">
-                <Image src={fpcard1} alt="VGL" />
-              </a>
-            </article>
-          </div>
-          <div class="fp">
-            <article>
-              <h3>Golflink</h3>
-              <p>
-                Check your handicap here. <a
-                  href="https://www.golf.org.au/handicap/">Golflink</a
-                >
-              </p>
-              <a href="https://www.golf.org.au/handicap/">
-                <Image src={fpcard2} alt="Golflink" />
-              </a>
-            </article>
-          </div>
-          <div class="fp">
-            <article>
-              <h3>Royal Park Golf Course</h3>
-              <p>
-                Royal Park Golf Course website <a
-                  href="https://royalparkgolfcourse.ymca.org.au/">link.</a
-                >
-              </p>
-              <a href="https://royalparkgolfcourse.ymca.org.au/">
-                <Image src={fpcard3} alt="RPGC Website" />
-              </a>
-            </article>
-          </div>
+          <article class="fp">
+            <h3>Victorian Golf League</h3>
+            <p>
+              Victorian Golf League website <a href="https://www.vgl.golf/"
+                >link.</a
+              >
+            </p>
+            <a href="https://www.vgl.golf/">
+              <Image src={fpcard1} alt="VGL" />
+            </a>
+          </article>
+          <article class="fp">
+            <h3>Golflink</h3>
+            <p>
+              Check your handicap here. <a
+                href="https://www.golf.org.au/handicap/">Golflink</a
+              >
+            </p>
+            <a href="https://www.golf.org.au/handicap/">
+              <Image src={fpcard2} alt="Golflink" />
+            </a>
+          </article>
+
+          <article class="fp">
+            <h3>Royal Park Golf Course</h3>
+            <p>
+              Royal Park Golf Course website <a
+                href="https://royalparkgolfcourse.ymca.org.au/">link.</a
+              >
+            </p>
+            <a href="https://royalparkgolfcourse.ymca.org.au/">
+              <Image src={fpcard3} alt="RPGC Website" />
+            </a>
+          </article>
         </div>
       </article>
     </div>
   </div>
+
+  <style>
+    .fp {
+      text-align: center;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      > a {
+        align-self: center;
+      }
+    }
+    .grid {
+      grid-template-rows: repeat(3, auto);
+    }
+    .text-block {
+    }
+  </style>
 </FrontPageLayout>
-<style>
-  .fp {
-    text-align: center;
-  }
-</style>

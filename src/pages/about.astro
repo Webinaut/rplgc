@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import placeholder from "../images/placeholder-portfolio-black-1.jpg";
 const pageTitle = "About Us";
 ---
 
@@ -8,50 +9,79 @@ const pageTitle = "About Us";
   <div class="container">
     <article>
       <p>
-        Royal Park Ladies’ Golf Club currently has 51 playing members and a
-        small number of social members. The club is managed by a committee of 11
-        members, who are elected each year at the Annual General Meeting.
+        Royal Park Ladies Golf Club currently has 59 playing members and a small
+        number of social members. The club is managed by a committee of 10
+        members who are elected each year at the Annual General Meeting.
       </p>
       <p>Our club colours are navy blue, red and yellow.</p>
-      <h3>Committee Office-Bearers 2024</h3>
-      <p>
-        President: Barbara Allen <br />
-        Vice President: Helen Fraser <br />
-        Secretary: Susan O'Brien <br />
-        Treasurer: Margaret Germaine <br />
-        Captain: Colleen Newton <br />
-        Vice - Captain: 18 Holes Merryle French <br />
-        Captain: 9 Holes Lesley Tipping <br />
-        Handicapper: Nola Graham <br />
-        House Committee: Angela Moylan, Andrea McDonough, Helen Fraser, Gill Collins
-      </p>
-      <h3>History</h3><p>
-        The Royal Park Ladies Golf Club was formed in March 1972 by Mavis Boland
-        and Olive Barass, together with a group of friends. Prior to this, women
-        had played as Associate members of The Royal Park Golf Club since 1906.
-      </p>
-      <p>
-        The contribution made by Mavis Boland to the Club, continues to be
-        acknowledged by the naming of the trophy for the annual Club Champion in
-        her honour. During the 1970’s and 1980’s R.P.L.G.C. had successful
-        Pennant teams, winning a number of Premierships in both sections E and
-        B.
-      </p>
-      <p>
-        Approximately forty years after the last pennant team competed, the 2023
-        team won the pennant in their division to the delight of members. Over
-        the years the women have been involved in many fundraising and social
-        events for the benefit of the club and charities.
-      </p>
-      <p>
-        In 2023 all funds raised were donated to the "McAuley Community Services
-        for Women".
-      </p>
+      <h2>Committee Office-Bearers 2025</h2>
+      <div class="grid">
+        <div class="left-col">
+          <p>
+            President: Barbara Allen <br />
+            Vice President: Helen Fraser <br />
+            Secretary: Susan O'Brien <br />
+            Treasurer: Margaret Germaine <br />
+            Captain: Colleen Newton <br />
+            Captain - 9 Holes: Robyn Metcalfe <br />
+            Handicapper: Nola Graham <br />
+            House Committee: Angela Moylan, Andrea McDonough, Diane Turner
+          </p>
+        </div>
+        <div class="illustration right-col">
+          <Image src={placeholder} alt="Placeholder" />
+        </div>
+      </div>
+      <h2>History</h2>
+      <div class="grid">
+        <div class="left-col">
+          <p>
+            The Royal Park Ladies Golf Club was formed in March 1972 by Mavis
+            Boland and Olive Barass, together with a group of friends. Prior to
+            this, women had played as Associate members of The Royal Park Golf
+            Club since 1906.
+          </p>
+          <p>
+            The contribution made by Mavis Boland to the Club continues to be
+            acknowledged by the naming of the trophy for the annual Club
+            Champion in her honour.
+          </p>
+          <p>
+            During the 1970s and 1980s, RPLGC had successful Pennant teams,
+            winning a number of Premierships in both sections E and B.
+            Approximately 40 years after the last pennant team competed, the
+            2023 and 2024 teams won their divisions to the delight of members.
+          </p>
+          <p>
+            Over the years the women have been involved in many fundraising and
+            social events for the benefit of the club and charities. In recent
+            years most of the funds raised were donated to the McAuley Community
+            Services for Women.
+          </p>
+        </div>
+        <div class="illustration right-col">
+          <Image src={placeholder} alt="Placeholder" />
+        </div>
+      </div>
     </article>
   </div>
   <style lang="scss">
     h1 {
       text-align: center;
+    }
+    .grid {
+      grid-gap: 16px;
+    }
+    .illustration {
+      padding: 0 3em;
+    }
+    @media (max-width: 768px) {
+      .right-col {
+        order: 1;
+      }
+      .left-col {
+        order: 2;
+      }
     }
   </style>
 </Layout>
