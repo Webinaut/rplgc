@@ -2,12 +2,10 @@
 import { Image } from "astro:assets";
 import Chipping from "../images/front-page/image-stack/Chipping.jpg";
 import Putting from "../images/front-page/image-stack/Putting.jpg";
-// import Lesson from "../images/front-page/image-stack/Lesson.jpg";
 ---
 
 <div class="image-stack">
   <div class="putting"><Image src={Putting} alt="Putting" /></div>
-  <!-- <div class="lesson"><Image src={Lesson} alt="Lesson" /></div> -->
   <div class="chipping"><Image src={Chipping} alt="Chipping" /></div>
 </div>
 <style>
@@ -30,11 +28,4 @@ import Putting from "../images/front-page/image-stack/Putting.jpg";
     padding-left: 1em;
     z-index: 3;
   }
-  /* .lesson {
-    width: 70%;
-    grid-row: 1;
-    grid-column: 8 / span 5;
-    padding-top: 20%;
-    z-index: 4;
-  } */
 </style>
