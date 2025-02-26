@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import gallery1 from '../images/gallery/gallery-1.jpg';
+import gallery2 from '../images/gallery/gallery-2.jpg';
+import gallery3 from '../images/gallery/gallery-3.jpg';
+import gallery4 from '../images/gallery/gallery-4.jpg';
+import gallery5 from '../images/gallery/gallery-5.jpg';
+import gallery6 from '../images/gallery/gallery-6.jpg';
+
+// Define the gallery images with their metadata
+const galleryImages = [
+  {
+    src: gallery1,
+    alt: "Gallery 1",
+    caption: "First Gallery Photo",
+    width: 800,
+    height: 600
+  },
+  {
+    src: gallery2,
+    alt: "Gallery 2",
+    caption: "Second Gallery Photo",
+    width: 800,
+    height: 600
+  },
+    {
+    src: gallery3,
+    alt: "Gallery 3",
+    caption: "Third Gallery Photo",
+    width: 800,
+    height: 600
+  },
+    {
+    src: gallery4,
+    alt: "Gallery 4",
+    caption: "Fourth Gallery Photo",
+    width: 800,
+    height: 600
+  },
+    {
+    src: gallery5,
+    alt: "Gallery 5",
+    caption: "Fifth Gallery Photo",
+    width: 800,
+    height: 600
+  },
+    {
+    src: gallery6,
+    alt: "Gallery 6",
+    caption: "Sixth Gallery Photo",
+    width: 800,
+    height: 600
+  }
+];
+---
+
+<div class="gallery-container">
+  <div class="gallery">
+    {galleryImages.map((image) => (
+      <figure class="gallery-item">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          class="gallery-image"
+        />
+        <figcaption>{image.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+</div>
+
+<style>
+  .gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .gallery-item {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  figcaption {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-container {
+      padding: 1rem;
+    }
+  }
+</style>
