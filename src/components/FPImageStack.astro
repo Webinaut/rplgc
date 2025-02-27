@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import Chipping from "../images/front-page/image-stack/Chipping.jpg";
-import Putting from "../images/front-page/image-stack/Putting.jpg";
+import One from "../images/front-page/image-stack/IMG_0554.jpg";
+import Two from "../images/front-page/image-stack/Premiers.jpg";
 ---
 
 <div class="image-stack">
-  <div class="putting"><Image src={Putting} alt="Putting" /></div>
-  <div class="chipping"><Image src={Chipping} alt="Chipping" /></div>
+  <div class="one"><Image src={One} alt="Playing" /></div>
+  <div class="two"><Image src={Two} alt="Premiers" /></div>
 </div>
 <style>
   .image-stack {
@@ -14,17 +14,17 @@ import Putting from "../images/front-page/image-stack/Putting.jpg";
     position: relative;
     grid-template-columns: repeat(12, 1fr);
   }
-  .putting {
+  .one {
     /* width: 60%; */
-    grid-column: 1 / span 6;
+    grid-column: 1 / span 8;
     grid-row: 1;
     z-index: 2;
   }
-  .chipping {
+  .two {
     width: 100%;
     grid-row: 1;
-    grid-column: 6 / span 6;
-    padding-top: 50%;
+    grid-column: 3 / span 9;
+    padding-top: 55%;
     padding-left: 1em;
     z-index: 3;
   }
