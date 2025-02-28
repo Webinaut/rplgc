@@ -14,8 +14,8 @@ const pageTitle = "Royal Park Ladies Golf Club";
   <div class="container">
     <div class="main">
       <article>
-        <div class="grid">
-          <div class="text-block">
+        <div class="grid grid1">
+          <div class="left-col">
             <p>
               Royal Park Ladies Golf Club plays at Royal Park Golf Course in
               Parkville.
@@ -42,7 +42,7 @@ const pageTitle = "Royal Park Ladies Golf Club";
               For more information see our <a href="/contact/">contact page.</a>
             </p>
           </div>
-          <div><FPImageStack /></div>
+          <div class="right-col"><FPImageStack /></div>
         </div>
       </article>
       <article>
@@ -109,7 +109,16 @@ const pageTitle = "Royal Park Ladies Golf Club";
     .grid {
       grid-template-rows: repeat(3, auto);
     }
-    .text-block {
+    .grid.grid1 {
+      grid-template-columns: 40% 60%;
+    }
+    @media (max-width: 768px) {
+      .right-col {
+        order: 1;
+      }
+      .left-col {
+        order: 2;
+      }
     }
   </style>
 </FrontPageLayout>
