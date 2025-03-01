@@ -69,10 +69,13 @@ const { pageTitle } = Astro.props;
       import Splide from "@splidejs/splide";
 
       new Splide(".splide", {
-        type: "loop",
-        speed: 800,
+        type: "fade",
+        rewind: true,
+        resetProgress: true,
+        pauseOnFocus: false,
+        speed: 1200,
         autoplay: true,
-        interval: 4000,
+        interval: 6000,
         pauseOnHover: false,
         arrows: false,
         width: "1440px",
