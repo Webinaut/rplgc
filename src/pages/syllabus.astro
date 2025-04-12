@@ -7,16 +7,14 @@ const pageTitle = "2025 Syllabus";
 
 <Layout pageTitle={pageTitle}>
   <div class="container">
-    <!-- <Image src={syllabus} alt="Syllabus" /> -->
-    <article><Image src={syllabus} alt="Syllabus" /></article>
-    <!-- <iframe
-      src="/assets/RPLGC Final Syllabus 2025.pdf"
-      width="100%"
-      height="800"></iframe> -->
+    <article class="syll"><Image src={syllabus} alt="Syllabus" /></article>
   </div>
   <style lang="scss">
     h1 {
       text-align: center;
+    }
+    .syll {
+      background-color: var(--pico-primary-inverse);
     }
   </style>
 </Layout>

@@ -6,7 +6,8 @@
 // Styles
 @use "@picocss/pico/scss/themes/default/styles";
 // Variables
-@import "themes/custom-colors";
+// @import "themes/custom-colors";
+@import "themes/custom-colors-rplgc";
 // Font
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 :root {
@@ -84,7 +85,13 @@ a[role="button"] {
       5.8px 11.6px 17.1px -1.2px hsl(var(--shadow-color) / 0.18);
   }
 }
-// Splide Pagination Styles
+
+p,
+ul {
+  --pico-color: var(--pico-h1-color);
+}
+
+// Splide Pagination Sty--pico-color:les
 button[role="tab"] {
   padding: 0 1em;
   background-color: var(--pico-color);
@@ -100,7 +107,7 @@ button[role="tab"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--pico-color);
+  // background-color: var(--pico-color);
   padding: 20px;
 }
 .main-nav {
@@ -173,19 +180,6 @@ button[role="tab"] {
 }
 
 @media only screen and (max-width: 768px) {
-  .logo {
-    // display: none;
-    display: flex;
-    justify-content: flex-start;
-    & img {
-      max-width: 100px;
-    }
-  }
-  // .logo2 {
-  //   display: flex;
-  //   justify-content: flex-end;
-  // }
-
   nav,
   nav ul,
   nav li {
@@ -196,13 +190,9 @@ button[role="tab"] {
   nav li {
     margin-bottom: var(--pico-nav-link-spacing-vertical);
   }
-  // nav li [role="button"] {
-  //   background-color: var(--pico-primary-focus);
-  //   color: var(--pico-primary-inverse);
-  // }
   /*
-    * Just a quick hamburger
-    */
+  * Just a quick hamburger
+  */
 
   .top-bar {
     margin: 1em 1em 1em 0;
