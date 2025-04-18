@@ -136,11 +136,10 @@ const galleryImages = [
   }
 </style>
 <script>
-  const images = document.querySelectorAll("img.gallery-image");
+  const images = document.querySelectorAll("img");
   images.forEach(function (imag) {
-    const image = imag as HTMLImageElement; // Cast to HTMLImageElement
-    image.addEventListener("click", () => {
-      window.open(image.src, "_blank", "noopener,noreferrer");
+    imag.addEventListener("click", () => {
+      window.open(imag.src, "_blank", "noopener,noreferrer");
     });
   });
 </script>
