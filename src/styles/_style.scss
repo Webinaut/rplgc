@@ -95,9 +95,9 @@ ul {
 button[role="tab"] {
   // padding: 0 1em;
   background-color: var(--pico-color);
-  // border-radius: 10%;
-  // border: none;
-  // margin: 0.5em 1em;
+  border-radius: 10%;
+  border: none;
+  margin: 0.5em 1em;
   &.is-active {
     background-color: var(--pico-primary);
   }
