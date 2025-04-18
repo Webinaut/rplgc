@@ -91,15 +91,15 @@ ul {
   --pico-color: var(--pico-h1-color);
 }
 
-// Splide Pagination Sty--pico-color:les
+// Splide Pagination Styles
 button[role="tab"] {
-  padding: 0 1em;
-  background-color: var(--pico-color);
-  border-radius: 10%;
+  // padding: 0 1em;
+  // background-color: var(--pico-color);
+  // border-radius: 10%;
   border: none;
-  margin: 0.5em 1em;
+  // margin: 0.5em 1em;
   &.is-active {
-    background-color: var(--pico-primary-hover-background);
+    background-color: var(--pico-primary);
   }
 }
 // Astro Styles

@@ -42,6 +42,7 @@ const { pageTitle } = Astro.props;
   <body>
     <Header />
     <div class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__arrows"></div>
       <div class="splide__track">
         <ul class="splide__list">
           {
@@ -77,7 +78,8 @@ const { pageTitle } = Astro.props;
         autoplay: true,
         interval: 6000,
         pauseOnHover: false,
-        arrows: false,
+        arrows: true,
+        pagination: true,
         width: "1920px",
         height: "500px",
         cover: true,
@@ -106,7 +108,10 @@ const { pageTitle } = Astro.props;
   .splide__pagination__page {
     height: 3em;
   }
-
+  .splide__track ul li,
+  .splide__arrows {
+    --pico-primary-focus: transparent;
+  }
   .container {
     margin-top: 450px;
   }

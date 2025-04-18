@@ -73,7 +73,29 @@ const galleryImages = [
   </div>
 </div>
 
-<style>
+<!-- Modal -->
+<dialog id="modal3" onclick="event.target === this && this.close()">
+  <article>
+    <section class="splide" role="group" aria-label="Splide Basic HTML Example">
+      <div class="splide__arrows"></div>
+      <div class="splide__track">
+        <ul class="splide__list">
+          {
+            galleryImages.map((image) => (
+              <li class="splide__slide">
+                <div class="splide__slide__container">
+                  <Image src={image.src} alt="" loading="lazy" />
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </article>
+</dialog>
+
+<style lang="scss">
   .gallery-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -134,13 +156,83 @@ const galleryImages = [
       padding: 1rem;
     }
   }
+  .splide__slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+  }
+
+  .splide__arrows {
+    --pico-primary-focus: transparent;
+  }
+
+  /* Modal */
+  /* prevent scroll when dialog is open */
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  dialog:not([open]) {
+    display: grid;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: all var(--pico-transition) allow-discrete;
+  }
+
+  dialog[open] {
+    display: grid;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity var(--pico-transition);
+  }
+
+  dialog article {
+    margin: 0;
+    padding: 1em 0;
+    max-width: 90vw;
+    max-height: unset;
+    overflow: unset;
+    transform: scale(0.5);
+    transition: transform var(--pico-transition);
+  }
+  dialog article section {
+    margin-bottom: 0;
+    /* max-width: 90vw; */
+    /*height: 90vh;*/
+  }
+  dialog[open] article {
+    transform: scale(1);
+  }
 </style>
+
 <script>
   const images = document.querySelectorAll("img.gallery-image");
+  const dialog = document.getElementById("modal3");
   images.forEach(function (imag) {
-    const image = imag as HTMLImageElement; // Cast to HTMLImageElement
-    image.addEventListener("click", () => {
-      window.open(image.src, "_blank", "noopener,noreferrer");
+    imag.addEventListener("click", () => {
+      (dialog as HTMLDialogElement).showModal();
     });
   });
+</script>
+<script>
+  // Splide Section
+  import "@splidejs/splide/css";
+  import Splide from "@splidejs/splide";
+
+  new Splide(".splide", {
+    type: "slide",
+    perPage: 1,
+    // focus: 0,
+    // slideFocus: false,
+    live: false,
+    // arrows: true,
+    speed: 800,
+    // autoplay: false,
+    // width: "100%",
+    // height: "500px",
+    // cover: true,
+    pagination: true,
+    padding: 0,
+  }).mount();
 </script>
