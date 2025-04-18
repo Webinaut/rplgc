@@ -77,8 +77,8 @@ const { pageTitle } = Astro.props;
         autoplay: true,
         interval: 6000,
         pauseOnHover: false,
-        // arrows: true,
-        // pagination: true,
+        arrows: true,
+        pagination: true,
         width: "1920px",
         height: "500px",
         cover: true,
@@ -104,13 +104,13 @@ const { pageTitle } = Astro.props;
     height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   }
-  // .splide__pagination__page {
-  //   height: 3em;
-  // }
-  // .splide__track ul li,
-  // .splide__arrows {
-  //   --pico-primary-focus: transparent;
-  // }
+  .splide__pagination__page {
+    height: 3em;
+  }
+  .splide__track ul li,
+  .splide__arrows {
+    --pico-primary-focus: transparent;
+  }
   .container {
     margin-top: 450px;
   }
