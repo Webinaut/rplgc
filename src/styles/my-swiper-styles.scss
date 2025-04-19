@@ -1,0 +1,12 @@
+:root {
+  --swiper-theme-color: var(--pico-primary);
+}
+
+.swiper-pagination-bullet {
+  opacity: 100%;
+  background-color: var(--pico-secondary);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--swiper-theme-color);
+}
