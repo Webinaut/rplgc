@@ -81,6 +81,13 @@ const galleryImages = [
 <!-- Swiper Modal -->
 <dialog id="modal3" onclick="event.target === this && this.close()">
   <article>
+    <a
+      href="#"
+      rel="prev"
+      class="close"
+      onclick="this.closest('dialog').close()"
+    >
+    </a>
     <section>
       <div class="swiper">
         <div class="swiper-wrapper">
@@ -165,7 +172,7 @@ const galleryImages = [
   }
   .swiper-slide img {
     width: 100%;
-    height: 78vh;
+    height: 72vh;
     object-fit: contain;
     // padding: 1%;
   }
@@ -214,14 +221,22 @@ const galleryImages = [
   dialog[open] article {
     transform: scale(1);
   }
+  .close {
+    margin-top: calc(var(--pico-spacing) * -0.5);
+    width: 2rem;
+    height: 2rem;
+    background-size: auto 2rem;
+  }
 </style>
 
 <script>
   const images = document.querySelectorAll("img.gallery-image");
   const dialog = document.getElementById("modal3");
+  (dialog as HTMLDialogElement).inert = true;
   images.forEach(function (imag) {
     imag.addEventListener("click", () => {
       (dialog as HTMLDialogElement).showModal();
+      (dialog as HTMLDialogElement).inert = false;
     });
   });
 </script>
