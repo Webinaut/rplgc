@@ -2,6 +2,12 @@
 import "../styles/global.scss";
 import Header from "../components/FrontPageHeader.astro";
 import { Image } from "astro:assets";
+// import Swiper and modules styles
+import "swiper/scss";
+import "swiper/scss/pagination";
+import "swiper/scss/autoplay";
+import "swiper/scss/effect-fade";
+import "../styles/my-swiper-styles.scss";
 const FrontPagePhotos = await Astro.glob("../images/front-page/*.jpg").then(
   (files) => {
     return files.map((file) => file.default);
@@ -18,12 +24,7 @@ const { pageTitle } = Astro.props;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet" 
-    /> -->
+
     <title>{pageTitle}</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5P0H8MQSK7"
@@ -41,7 +42,22 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <div class="splide" aria-label="Splide Basic HTML Example">
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          FrontPagePhotos.map((FrontPagePhoto) => (
+            <div class="swiper-slide">
+              <Image src={FrontPagePhoto} alt="" loading="lazy" />
+            </div>
+          ))
+        }
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- <div class="splide" aria-label="Splide Basic HTML Example">
       <div class="splide__track">
         <ul class="splide__list">
           {
@@ -55,7 +71,7 @@ const { pageTitle } = Astro.props;
           }
         </ul>
       </div>
-    </div>
+    </div> -->
     <div class="container">
       <h1 style="text-align: center;">{pageTitle}</h1>
       <slot />
@@ -65,6 +81,37 @@ const { pageTitle } = Astro.props;
       import "../scripts/menu.js";
     </script>
     <script>
+      // core version + navigation, pagination modules:
+      import Swiper from "swiper";
+      import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+
+      // init Swiper:
+      const swiper = new Swiper(".swiper", {
+        // configure Swiper to use modules
+        modules: [Autoplay, Pagination, EffectFade],
+
+        // Optional parameters
+        // direction: "horizontal",
+        // fadeEffect: { crossFade: true },
+        loop: true,
+        slidesPerView: 1,
+        // spaceBetween: 10,
+        centeredSlides: true,
+        speed: 1200,
+        effect: "fade",
+        autoplay: {
+          delay: 6000,
+          disableOnInteraction: false,
+        },
+
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+        },
+      });
+    </script>
+    <!-- <script>
       import "@splidejs/splide/css";
       import Splide from "@splidejs/splide";
 
@@ -85,17 +132,24 @@ const { pageTitle } = Astro.props;
         gap: "10vw",
         padding: 0,
       }).mount();
-    </script>
+    </script> -->
   </body>
 </html>
 <style lang="scss">
-  .splide {
+  .swiper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    height: 500px;
   }
-  .splide__slide::after {
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .swiper-slide::after {
     content: "";
     position: absolute;
     left: 0;
@@ -104,9 +158,25 @@ const { pageTitle } = Astro.props;
     height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   }
-  .splide__pagination__page {
-    height: 3em;
-  }
+
+  // .splide {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  // }
+  // .splide__slide::after {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  // }
+  // .splide__pagination__page {
+  //   height: 3em;
+  // }
   .container {
     margin-top: 450px;
   }

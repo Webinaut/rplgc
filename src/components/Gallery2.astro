@@ -174,7 +174,6 @@ const galleryImages = [
     width: 100%;
     height: 72vh;
     object-fit: contain;
-    // padding: 1%;
   }
   .caption {
     text-align: center;
@@ -230,17 +229,6 @@ const galleryImages = [
 </style>
 
 <script>
-  const images = document.querySelectorAll("img.gallery-image");
-  const dialog = document.getElementById("modal3");
-  (dialog as HTMLDialogElement).inert = true;
-  images.forEach(function (imag) {
-    imag.addEventListener("click", () => {
-      (dialog as HTMLDialogElement).showModal();
-      (dialog as HTMLDialogElement).inert = false;
-    });
-  });
-</script>
-<script>
   // core version + navigation, pagination modules:
   import Swiper from "swiper";
   import { Navigation, Pagination } from "swiper/modules";
@@ -252,7 +240,7 @@ const galleryImages = [
 
     // Optional parameters
     direction: "horizontal",
-    loop: true,
+    // loop: true,
     slidesPerView: 1,
     spaceBetween: 10,
     centeredSlides: true,
@@ -269,5 +257,19 @@ const galleryImages = [
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+  });
+
+  const images = document.querySelectorAll("img.gallery-image");
+  const dialog = document.getElementById("modal3");
+  (dialog as HTMLDialogElement).inert = true;
+  images.forEach(function (imag, index) {
+    imag.addEventListener("click", () => {
+      (dialog as HTMLDialogElement).showModal();
+      (dialog as HTMLDialogElement).inert = false;
+      swiper.slideTo(index);
+    });
+  });
+  (dialog as HTMLDialogElement).addEventListener("close", function () {
+    swiper.slideTo(1);
   });
 </script>
