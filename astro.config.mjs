@@ -9,6 +9,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // integrations: [relativeLinks()]
   trailingSlash: "always",
-  site: "https://royalparkladiesgolfclub.com.au/",
+  site: "https://dorsetgolfclub.com.au/",
   integrations: [sitemap()],
 });
