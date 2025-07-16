@@ -7,7 +7,7 @@
     <li>
       <a
         role="button"
-        class="close"
+        class="onegolf"
         href="https://royalparkladies.1golf.com.au/"
         target="_blank">OneGolf</a
       >
@@ -32,13 +32,29 @@
     </li>
   </ul>
 </nav>
-<style>
+<style lang="scss">
   li a {
     font-size: 1em;
     padding: 0 0.8em;
   }
+
   nav li [role="button"] {
+    padding: 0.2em 0.4em;
+    border-radius: 0.5em;
     margin: 0.5em 0;
     font-size: 1.25em;
+    transition: all 0.4s ease;
+    border: 2px solid var(--pico-primary-hover);
+    background: transparent;
+    color: var(--pico-primary-hover);
+    box-shadow: 0 0 5px var(--pico-primary-hover);
+
+    &:hover {
+      background: var(--pico-primary-hover);
+      color: var(--pico-color);
+      box-shadow:
+        0 0 0.2em var(--pico-primary-hover),
+        0 0 0.4em var(--pico-primary-hover);
+    }
   }
 </style>
