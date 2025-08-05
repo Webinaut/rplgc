@@ -1,5 +1,6 @@
 :root {
   --swiper-theme-color: var(--pico-primary);
+  --swiper-navigation-size: 1.5em !important;
 }
 
 .swiper-pagination-bullet {
@@ -9,4 +10,12 @@
 
 .swiper-pagination-bullet-active {
   background-color: var(--swiper-theme-color);
+}
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 1em;
+  // background-color: var(--pico-primary-inverse);
+  border: solid 2px var(--pico-primary);
+  border-radius: 3px;
+  box-shadow: 0 0 3px var(--pico-primary);
 }
