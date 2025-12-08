@@ -8,11 +8,11 @@ import "swiper/scss/pagination";
 import "swiper/scss/autoplay";
 import "swiper/scss/effect-fade";
 import "../styles/my-swiper-styles.scss";
-const FrontPagePhotos = await Astro.glob("../images/front-page/*.jpg").then(
-  (files) => {
-    return files.map((file) => file.default);
-  }
-);
+const FrontPagePhotos = await Astro.glob(
+  "../images/front-page/2026/*.jpg"
+).then((files) => {
+  return files.map((file) => file.default);
+});
 import Footer from "../components/Footer.astro";
 const { pageTitle } = Astro.props;
 ---
@@ -96,7 +96,7 @@ const { pageTitle } = Astro.props;
         loop: true,
         slidesPerView: 1,
         // spaceBetween: 10,
-        centeredSlides: true,
+        // centeredSlides: true,
         speed: 1200,
         effect: "fade",
         autoplay: {
@@ -145,6 +145,8 @@ const { pageTitle } = Astro.props;
   }
   .swiper-slide img {
     display: block;
+    // display: flex;
+    // align-self: flex-start;
     width: 100%;
     height: 100%;
     object-fit: cover;
