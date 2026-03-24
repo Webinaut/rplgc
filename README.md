@@ -1,4 +1,4 @@
-# Mart.I.N - Revitalise Your Website
+# Royal Park Ladies Golf Club
 
 Website: [Royal Park Ladies Golf Club](https://royalparkladiesgolfclub.com.au/)  
 Github: [rplgc](https://github.com/Webinaut/rplgc)
