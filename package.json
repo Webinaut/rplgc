@@ -1,7 +1,7 @@
 {
-  "name": "dorset-golf-club",
+  "name": "royal-park-ladies-golf-club",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,9 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.2",
+    "@astrojs/sitemap": "^3.7.1",
     "@picocss/pico": "^2.0.6",
-    "astro": "^5.12.9",
+    "astro": "^6.0.8",
     "sass": "1.77.6",
     "swiper": "^11.2.6"
   }
