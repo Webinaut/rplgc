@@ -41,7 +41,6 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-
     <div class="swiper">
       <div class="swiper-wrapper">
         {
@@ -54,94 +53,72 @@ const { pageTitle } = Astro.props;
       </div>
       <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
-
-      <div class="container">
-        <h1 style="text-align: center;">{pageTitle}</h1>
-        <slot />
-      </div>
-      <Footer />
-      <script>
-        import "../scripts/menu.js";
-      </script>
-      <script>
-        // core version + navigation, pagination modules:
-        import Swiper from "swiper";
-        import { Autoplay, Pagination, EffectFade } from "swiper/modules";
-
-        // init Swiper:
-        const swiper = new Swiper(".swiper", {
-          // configure Swiper to use modules
-          modules: [Autoplay, Pagination, EffectFade],
-
-          // Optional parameters
-          // direction: "horizontal",
-          // fadeEffect: { crossFade: true },
-          loop: true,
-          slidesPerView: 1,
-          // spaceBetween: 10,
-          // centeredSlides: true,
-          speed: 1200,
-          effect: "fade",
-          autoplay: {
-            delay: 6000,
-            disableOnInteraction: false,
-          },
-
-          // If we need pagination
-          pagination: {
-            el: ".swiper-pagination",
-            type: "bullets",
-          },
-        });
-      </script>
     </div>
-  </body>
-  <style lang="scss">
-    .swiper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 500px;
-    }
-    .swiper-slide img {
-      display: block;
-      // display: flex;
-      // align-self: flex-start;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .swiper-slide::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-    }
+    <div class="container">
+      <h1 style="text-align: center;">{pageTitle}</h1>
+      <slot />
+    </div>
+    <Footer />
+    <script>
+      import "../scripts/menu.js";
+    </script>
+    <script>
+      // core version + navigation, pagination modules:
+      import Swiper from "swiper";
+      import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 
-    // .splide {
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    // }
-    // .splide__slide::after {
-    //   content: "";
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   width: 100%;
-    //   height: 100%;
-    //   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-    // }
-    // .splide__pagination__page {
-    //   height: 3em;
-    // }
-    .container {
-      margin-top: 450px;
-    }
-  </style>
+      // init Swiper:
+      const swiper = new Swiper(".swiper", {
+        // configure Swiper to use modules
+        modules: [Autoplay, Pagination, EffectFade],
+
+        // Optional parameters
+        // direction: "horizontal",
+        // fadeEffect: { crossFade: true },
+        loop: true,
+        slidesPerView: 1,
+        // spaceBetween: 10,
+        // centeredSlides: true,
+        speed: 1200,
+        effect: "fade",
+        autoplay: {
+          delay: 6000,
+          disableOnInteraction: false,
+        },
+
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+        },
+      });
+    </script>
+  </body>
 </html>
+<style lang="scss">
+  .swiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+  }
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .swiper-slide::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  }
+  .container {
+    margin-top: 450px;
+  }
+</style>
