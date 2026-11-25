@@ -2,13 +2,13 @@
 import "../styles/global.scss";
 import Header from "../components/FrontPageHeader.astro";
 import { Image } from "astro:assets";
-// import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
 import "../styles/my-swiper-styles.scss";
 import Footer from "../components/Footer.astro";
+
 const FrontPagePhotos = import.meta.glob<{ default: ImageMetadata }>(
   "../images/front-page/2026/*.{jpeg,jpg,png,webp}",
 );
@@ -19,17 +19,14 @@ const { pageTitle } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image" href="/RPLGC-Favicon-2.png" />
+    <link rel="icon" type="image/png" href="/RPLGC-Favicon-2.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{pageTitle}</title>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-5P0H8MQSK7"
-    ></script>
+    <script async src="https://googletagmanager.com"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -43,15 +40,21 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <div class="swiper">
+    <div class="swiper hero-swiper">
       <div class="swiper-wrapper">
-        {HeroPhotos.map((image) => (
+        {HeroPhotos.map((image, index) => (
           <div class="swiper-slide">
-            <Image src={image()} alt="" loading="lazy" />
+            <Image
+              src={image()}
+              alt=""
+              widths={[640, 1024, 1600]}
+              sizes="100vw"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : "auto"}
+            />
           </div>
         ))}
       </div>
-      <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
     </div>
     <div class="container">
@@ -63,40 +66,37 @@ const { pageTitle } = Astro.props;
       import "../scripts/menu.js";
     </script>
     <script>
-      // core version + navigation, pagination modules:
       import Swiper from "swiper";
       import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 
-      // init Swiper:
-      const swiper = new Swiper(".swiper", {
-        // configure Swiper to use modules
-        modules: [Autoplay, Pagination, EffectFade],
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-        // Optional parameters
-        // direction: "horizontal",
-        // fadeEffect: { crossFade: true },
+      new Swiper(".hero-swiper", {
+        modules: [Autoplay, Pagination, EffectFade],
         loop: true,
         slidesPerView: 1,
-        // spaceBetween: 10,
-        // centeredSlides: true,
-        speed: 1200,
+        speed: prefersReducedMotion ? 0 : 1200,
         effect: "fade",
-        autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
-        },
-
-        // If we need pagination
+        autoplay: prefersReducedMotion
+          ? false
+          : {
+              delay: 6000,
+              disableOnInteraction: false,
+            },
         pagination: {
-          el: ".swiper-pagination",
+          el: ".hero-swiper .swiper-pagination",
           type: "bullets",
+          clickable: true,
         },
       });
     </script>
   </body>
 </html>
+
 <style lang="scss">
-  .swiper {
+  .hero-swiper {
     position: absolute;
     top: 0;
     left: 0;
