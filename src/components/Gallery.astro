@@ -7,9 +7,9 @@ import gallery4 from "../images/gallery/IMG_1085.jpg";
 import gallery5 from "../images/gallery/IMG_1064.jpg";
 import gallery6 from "../images/gallery/IMG_2359.jpg";
 // import Swiper and modules styles
-import "swiper/scss";
-import "swiper/scss/navigation";
-import "swiper/scss/pagination";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "../styles/my-swiper-styles.scss";
 
 // Define the gallery images with their metadata
@@ -61,20 +61,18 @@ const galleryImages = [
 
 <div class="gallery-container">
   <div class="gallery">
-    {
-      galleryImages.map((image) => (
-        <figure class="gallery-item">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-            class="gallery-image"
-          />
-          <figcaption>{image.caption}</figcaption>
-        </figure>
-      ))
-    }
+    {galleryImages.map((image) => (
+      <figure class="gallery-item">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          class="gallery-image"
+        />
+        <figcaption>{image.caption}</figcaption>
+      </figure>
+    ))}
   </div>
 </div>
 
@@ -86,19 +84,16 @@ const galleryImages = [
       rel="prev"
       class="close"
       onclick="this.closest('dialog').close()"
-    >
-    </a>
+    ></a>
     <section>
       <div class="swiper">
         <div class="swiper-wrapper">
-          {
-            galleryImages.map((image) => (
-              <div class="swiper-slide">
-                <Image src={image.src} alt="" loading="lazy" />
-                <p class="caption">{image.caption}</p>
-              </div>
-            ))
-          }
+          {galleryImages.map((image) => (
+            <div class="swiper-slide">
+              <Image src={image.src} alt="" loading="lazy" />
+              <p class="caption">{image.caption}</p>
+            </div>
+          ))}
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>

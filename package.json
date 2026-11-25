@@ -9,10 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.6",
     "@picocss/pico": "^2.0.6",
-    "astro": "^6.3.3",
+    "astro": "^7.4.13",
     "sass": "1.77.6",
-    "swiper": "^11.2.6"
+    "swiper": "^14.4.0"
   }
 }

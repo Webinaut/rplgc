@@ -3,10 +3,10 @@ import "../styles/global.scss";
 import Header from "../components/FrontPageHeader.astro";
 import { Image } from "astro:assets";
 // import Swiper and modules styles
-import "swiper/scss";
-import "swiper/scss/pagination";
-import "swiper/scss/autoplay";
-import "swiper/scss/effect-fade";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 import "../styles/my-swiper-styles.scss";
 import Footer from "../components/Footer.astro";
 const FrontPagePhotos = import.meta.glob<{ default: ImageMetadata }>(
@@ -26,7 +26,9 @@ const { pageTitle } = Astro.props;
 
     <title>{pageTitle}</title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5P0H8MQSK7"
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5P0H8MQSK7"
     ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -43,13 +45,11 @@ const { pageTitle } = Astro.props;
     <Header />
     <div class="swiper">
       <div class="swiper-wrapper">
-        {
-          HeroPhotos.map((image) => (
-            <div class="swiper-slide">
-              <Image src={image()} alt="" loading="lazy" />
-            </div>
-          ))
-        }
+        {HeroPhotos.map((image) => (
+          <div class="swiper-slide">
+            <Image src={image()} alt="" loading="lazy" />
+          </div>
+        ))}
       </div>
       <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
