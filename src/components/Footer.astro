@@ -4,16 +4,16 @@ const year = new Date();
 
 <div class="container-fluid">
   <footer>
-    Site By: <a href="https://mart-i-n.com.au/">Mart.I.N</a> &copy; The Royal Park
-    Ladies Golf Club &middot; 2025 - <span id="footer-year"
-      >{year.getFullYear()}</span
-    >
+    Site By: <a href="https://mart-i-n.com.au/">Mart.I.N</a> &copy; The Royal
+    Park Ladies Golf Club &middot; 2025 -{" "}
+    <span id="footer-year">{year.getFullYear()}</span>
   </footer>
 </div>
+
 <style>
   .container-fluid {
-    height: 70px;
-    background-color: var(--pico-color);
+    min-height: 70px;
+    background-color: var(--pico-primary-background);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,9 +21,16 @@ const year = new Date();
 
   footer {
     color: var(--pico-primary-inverse);
-    /* Centers the text content */
     text-align: center;
-    /* Makes the font smaller */
     font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--pico-primary-hover);
+  }
+
+  footer a:hover {
+    color: var(--pico-primary-inverse);
+    text-decoration: underline;
   }
 </style>

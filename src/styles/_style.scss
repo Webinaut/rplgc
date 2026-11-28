@@ -1,5 +1,5 @@
 /**
- * Theme: custom
+- Theme: custom
  */
 @use "sass:map";
 @use "@picocss/pico/scss/settings" as *;
@@ -10,8 +10,8 @@
 @import "themes/custom-colors-rplgc";
 // Font
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
-//=== Drawing effect
 
+//=== Drawing effect
 @mixin btn-border-drawing(
   $color: #ccc,
   $hover: black,
@@ -34,26 +34,25 @@
     position: absolute;
     width: 0;
     height: 0;
-
     #{$vertical}: 0;
     #{$horizontal}: 0;
   }
 
   &::before {
     $h-side: if($horizontal == "left", "right", "left");
-
     border-#{$vertical}-width: $width;
     border-#{$h-side}-width: $width;
   }
 
   &::after {
     $v-side: if($vertical == "top", "bottom", "top");
-
     border-#{$v-side}-width: $width;
     border-#{$horizontal}-width: $width;
   }
 
-  &:hover {
+  &:hover,
+  &:focus-visible,
+  &:active {
     color: $hover;
 
     &::before,
@@ -77,6 +76,16 @@
   }
 }
 
+.btn {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 0.6em 1.2em;
+  letter-spacing: 0.05rem;
+}
+
 .draw-border {
   @include btn-border-drawing(
     var(--pico-primary-hover),
@@ -85,23 +94,6 @@
     bottom,
     right
   );
-}
-
-//=== Button styling, semi-ignore
-.btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1.5;
-  // font:
-  //   700 1.2rem "Roboto Slab",
-  //   sans-serif;
-  padding: 1em 2em;
-  letter-spacing: 0.05rem;
-
-  // &:focus {
-  //   outline: 2px dotted var(--pico-primary);
-  // }
 }
 
 :root {
@@ -114,13 +106,16 @@
   #{$css-var-prefix}block-spacing-vertical: 3rem;
   #{$css-var-prefix}nav-link-spacing-vertical: 0.5rem;
 }
+
 a,
 a:hover {
   text-decoration: none;
 }
-a:hover:not(.main-nav ul li a) {
+
+a:hover:not(.main-nav a) {
   font-size: 1.1em;
 }
+
 h1,
 h2,
 h3,
@@ -157,21 +152,31 @@ h5 {
   #{$css-var-prefix}typography-spacing-vertical: 1.25rem;
 }
 
-button,
+// Global high-contrast buttons (navy #1f1a50 on gold #fcc038 = 10.02:1)
+button:not([role="tab"]),
 button[type="submit"],
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 a[role="button"] {
-  color: var(--pico-primary-inverse);
+  color: var(--pico-primary-background);
   background-color: var(--pico-primary-focus);
-  #{$css-var-prefix}font-weight: 500;
+  #{$css-var-prefix}font-weight: 600;
+  font-weight: 600;
   border-radius: 9999px;
-  padding: 0.5em;
-  border: none;
-  &:hover {
-    color: var(--pico-primary-focus);
-    background-color: var(--pico-primary-inverse);
+  padding: 0.5em 1.25em;
+  border: 2px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--pico-primary-inverse);
+    background-color: var(--pico-primary-background);
+    border-color: var(--pico-primary-focus);
     --shadow-color: 0deg 0% 0%;
     box-shadow:
       0.3px 0.5px 0.8px hsl(var(--shadow-color) / 0.07),
@@ -186,131 +191,151 @@ ul {
   --pico-color: var(--pico-h1-color);
 }
 
-// Splide Pagination Sty--pico-color:les
+// Splide Pagination Styles (double-contrast ring for bright & dark photo backgrounds)
 button[role="tab"] {
-  padding: 0.3em;
-  background-color: var(--pico-color);
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  background-color: var(--pico-primary-inverse);
   border-radius: 50%;
-  border: none;
-  margin: 0.5em;
+  border: 2px solid var(--pico-primary-background);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  margin: 0.4em;
+  opacity: 0.85;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--pico-primary-focus);
+    outline-offset: 2px;
+  }
+
   &.is-active {
     background-color: var(--pico-primary);
+    border-color: var(--pico-primary-inverse);
+    transform: scale(1.25);
+    opacity: 1;
   }
 }
-// Astro Styles
+
+// Astro Navigation Styles
 .container-fluid {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // background-color: var(--pico-color);
   padding: 20px;
 }
+
 .main-nav {
-  max-height: 100px;
   & img {
     max-height: 160px;
     object-fit: contain;
     max-width: max-content;
     padding: 0.8em 1em;
   }
+
   & li {
     font-size: 1.2em;
-    padding: 2em 1em;
-    overflow: hidden;
+    padding: 10px;
+  }
+
+  // Standard nav links only (excludes .btn)
+  & a:not(.btn) {
+    position: relative;
+    font-weight: 500;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -2px;
+      left: 50%;
+      background-color: var(--pico-primary-hover);
+      transition:
+        width 0.3s ease-in-out,
+        left 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--pico-primary-hover);
+
+      &::before {
+        width: 100%;
+        left: 0;
+      }
+    }
+
+    &.active {
+      color: var(--pico-primary);
+    }
+  }
+
+  // Desktop OneGolf button colors
+  & a.btn.draw-border {
+    color: var(--pico-primary-hover);
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: var(--pico-primary);
+    }
   }
 }
 
-.main-nav ul li:not(:first-child) label.drop-icon:hover,
-.main-nav ul li:not(:first-child) a:hover {
-  position: relative;
-  cursor: pointer;
-  color: var(--pico-primary-hover);
-}
-
-.main-nav ul li:not(:first-child) a:before {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -1px;
-  left: 50%;
-  background-color: var(--pico-primary-hover);
-}
-
-.main-nav ul li a:hover:before {
-  width: 100%;
-  left: 0;
-  transition:
-    width 0.3s ease-in-out,
-    left 0.3s ease-in-out;
-  -webkit-transition:
-    width 0.3s ease-in-out,
-    left 0.3s ease-in-out;
-}
-
-.container-fluid nav ul li {
-  padding: 10px;
-}
-.active {
-  color: var(--pico-primary);
-}
 .logo .active {
   border-bottom: none;
 }
-@media only screen and (min-width: 769px) {
-  nav > ul > li > a,
-  label {
-    color: var(--pico-primary-inverse);
-    font-weight: 500;
-  }
 
+// Desktop Navigation
+@media only screen and (min-width: 769px) {
   .main-nav {
     display: flex;
     justify-content: flex-end;
+    max-height: 100px;
+
+    & a:not(.btn),
+    & label {
+      color: var(--pico-primary-inverse);
+    }
   }
+
   .logo {
     display: flex;
     justify-content: flex-start;
     width: 10%;
   }
+
   .hamburger {
     display: none;
   }
 }
 
+// Mobile Navigation
 @media only screen and (max-width: 768px) {
-  nav,
-  nav ul,
-  nav li {
-    display: block;
-    text-align: left;
-    background-color: var(--pico-primary-inverse);
-  }
-  nav li {
-    margin-bottom: var(--pico-nav-link-spacing-vertical);
-  }
-  /*
-  * Just a quick hamburger
-  */
-
   .top-bar {
     margin: 1em 1em 1em 0;
   }
+
   .hamburger {
     display: block;
     cursor: pointer;
-  }
-  .expanded {
-    display: unset;
-  }
-  .hamburger.expanded .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.expanded .bar:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-  }
-  .hamburger.expanded .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+
+    &.expanded {
+      .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
   }
 
   .bar {
@@ -320,48 +345,64 @@ button[role="tab"] {
     margin-bottom: 5px;
     background: var(--pico-primary-inverse);
     border-radius: 3px;
-    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
 
   .main-nav {
     display: none;
-  }
-  .main-nav.expanded {
-    z-index: 1;
-    padding: 0.5em;
-    border: solid var(--pico-primary-focus);
-    border-width: 2px 0 0 0;
-    box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.1);
-    display: block;
-    position: absolute;
-    top: 100px;
-    right: 5%;
-    > ul {
-      padding: 0.5em;
-    }
-  }
 
-  /* Menu */
-  .main-nav ul li a {
-    color: var(--pico-primary-background);
-  }
-  nav li:first-child a {
-    color: var(--pico-primary-inverse);
-  }
-  .main-nav ul li a.active {
-    color: var(--pico-primary);
-  }
-  nav li :where(a, [role="link"]):not(:hover),
-  label {
-    color: var(--pico-color);
-  }
-  .main-nav ul li a:before {
-    background-color: var(--pico-primary-focus);
-  }
-  .main-nav ul li:not(:first-child) label.drop-icon:hover,
-  .main-nav ul li:not(:first-child) a:hover {
-    position: relative;
-    cursor: pointer;
+    &.expanded {
+      display: block;
+      position: absolute;
+      top: 100px;
+      right: 5%;
+      z-index: 10;
+      padding: 0.5em;
+      background-color: var(--pico-primary-inverse);
+      border-top: 2px solid var(--pico-primary-focus);
+      box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.1);
+
+      & ul,
+      & li {
+        display: block;
+        text-align: left;
+        background-color: transparent;
+      }
+
+      & ul {
+        padding: 0.5em;
+      }
+
+      & li {
+        margin-bottom: var(--pico-nav-link-spacing-vertical);
+      }
+
+      & a:not(.btn),
+      & label {
+        color: var(--pico-primary-background);
+      }
+
+      & a:not(.btn)::before {
+        background-color: var(--pico-primary-focus);
+      }
+
+      // Bold active link for WCAG AA contrast on white background
+      & a:not(.btn).active {
+        color: var(--pico-primary);
+        font-weight: 700;
+      }
+
+      // High-contrast navy border/text on white mobile menu background
+      & a.btn.draw-border {
+        @include btn-border-drawing(
+          var(--pico-primary-background),
+          var(--pico-primary),
+          2px,
+          bottom,
+          right
+        );
+        font-weight: 600;
+      }
+    }
   }
 }

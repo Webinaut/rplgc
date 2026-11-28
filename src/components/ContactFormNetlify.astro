@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <form
@@ -22,13 +21,19 @@
     value="Contact Form from royalparkladiesgolfclub.com.au"
   />
   <fieldset>
-    <p><label>Name: <input type="text" name="name" /></label></p>
     <p>
-      <label>Email Address: <input type="email" name="email" /></label>
+      <label>
+        Name: <input type="text" name="name" required />
+      </label>
     </p>
     <p>
       <label>
-        Message: <textarea name="message"></textarea>
+        Email Address: <input type="email" name="email" required />
+      </label>
+    </p>
+    <p>
+      <label>
+        Message: <textarea name="message" rows="5" required></textarea>
       </label>
     </p>
   </fieldset>
@@ -37,15 +42,49 @@
     <button type="submit">Send</button>
   </p>
 </form>
+
 <style>
   .hidden {
     display: none;
   }
+
   label {
     color: var(--pico-color);
+    font-weight: 500;
   }
-  button {
+
+  input:not([type="hidden"]),
+  textarea {
+    margin-top: 0.35rem;
+    color: var(--pico-color);
+    border-color: var(--pico-card-border-color, #94a3b8);
+  }
+
+  input:not([type="hidden"]):focus,
+  textarea:focus {
+    border-color: var(--pico-primary-focus);
+    box-shadow: 0 0 0 0.2rem rgba(252, 192, 56, 0.35);
+  }
+
+  /* High-contrast navy text (#1f1a50) on gold (#fcc038) button = 10.02:1 */
+  button[type="submit"] {
     width: 50%;
     margin-top: 2em;
+    color: var(--pico-primary-background);
+    background-color: var(--pico-primary-focus);
+    font-weight: 600;
+  }
+
+  button[type="submit"]:hover,
+  button[type="submit"]:focus-visible {
+    color: var(--pico-primary-inverse);
+    background-color: var(--pico-primary-background);
+    border: 2px solid var(--pico-primary-focus);
+  }
+
+  @media (max-width: 768px) {
+    button[type="submit"] {
+      width: 100%;
+    }
   }
 </style>

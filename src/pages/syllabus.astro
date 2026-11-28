@@ -1,23 +1,70 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// import { Image } from "astro:assets";
-// import syllabus from "../images/RPLGC final Syllabus 2025.png";
 const pageTitle = "2027 Syllabus";
+const pdfUrl = "/Syllabus - 2027.pdf";
 ---
 
 <Layout pageTitle={pageTitle}>
   <div class="container">
     <article class="syll">
-      <iframe src="/Syllabus - 2027.pdf" width="100%" height="600px"></iframe>
+      <div class="syll-actions">
+        <a
+          href={pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          role="button"
+        >
+          Open / Download 2027 Syllabus (PDF)
+        </a>
+      </div>
+      <div class="pdf-wrapper">
+        <iframe
+          src={pdfUrl}
+          title="2027 Royal Park Ladies Golf Club Syllabus"
+          width="100%"
+          height="700"
+        >
+          <p>
+            Your browser cannot display inline PDFs.
+            <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
+              Download the 2027 Syllabus PDF
+            </a>.
+          </p>
+        </iframe>
+      </div>
     </article>
   </div>
-  <!-- <article class="syll"><Image src={syllabus} alt="Syllabus" /></article> -->
 </Layout>
+
 <style lang="scss">
   h1 {
     text-align: center;
   }
+
   .syll {
-    background-color: var(--pico-primary-inverse);
+    border: 1px solid var(--pico-card-border-color);
+  }
+
+  .syll-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .pdf-wrapper iframe {
+    display: block;
+    border: 1px solid var(--pico-card-border-color);
+    border-radius: var(--pico-border-radius);
+  }
+
+  @media (max-width: 768px) {
+    .pdf-wrapper iframe {
+      height: 450px;
+    }
+
+    .syll-actions a[role="button"] {
+      width: 100%;
+      text-align: center;
+    }
   }
 </style>

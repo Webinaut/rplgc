@@ -1,4 +1,4 @@
-/* Orange color for light color scheme (Default) */
+/* Custom color scheme for Royal Park Ladies Golf Club */
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
 :root:not([data-theme="dark"]),
@@ -9,20 +9,59 @@
   --pico-primary: #ff4236;
   --pico-primary-hover: #fcc038;
   --pico-primary-focus: #fcc038;
-  --pico-primary-inverse: #fff;
+  --pico-primary-inverse: #ffffff;
   --pico-secondary: #9c9c9c;
+  --pico-card-background-color: #ffffff;
+  --pico-card-border-color: #e2e8f0;
 }
 
 /* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme]),
   :host:not([data-theme]) {
-    --pico-color: #1f1a50;
-    --pico-primary-inverse: #fff;
+    --pico-color: #f1f5f9;
+    --pico-primary-background: #1f1a50;
+    --pico-text-selection-color: #29ba0f5d;
+    --pico-primary: #ff4236;
+    --pico-primary-hover: #fcc038;
+    --pico-primary-focus: #fcc038;
+    --pico-primary-inverse: #ffffff;
+    --pico-secondary: #b0b7c3;
+    --pico-card-background-color: #1e2433;
+    --pico-card-border-color: #334155;
+
+    article a:not(.btn, [role="button"]) {
+      color: var(--pico-primary-hover);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--pico-primary-inverse);
+        text-decoration: underline;
+      }
+    }
   }
 }
+
 /* Enabled if forced with data-theme="dark" */
 [data-theme="dark"] {
-  --pico-color: #1f1a50;
-  --pico-primary-inverse: #fff;
+  --pico-color: #f1f5f9;
+  --pico-primary-background: #1f1a50;
+  --pico-text-selection-color: #29ba0f5d;
+  --pico-primary: #ff4236;
+  --pico-primary-hover: #fcc038;
+  --pico-primary-focus: #fcc038;
+  --pico-primary-inverse: #ffffff;
+  --pico-secondary: #b0b7c3;
+  --pico-card-background-color: #1e2433;
+  --pico-card-border-color: #334155;
+
+  article a:not(.btn, [role="button"]) {
+    color: var(--pico-primary-hover);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--pico-primary-inverse);
+      text-decoration: underline;
+    }
+  }
 }

@@ -42,7 +42,9 @@ const pageTitle = "Royal Park Ladies Golf Club";
               If you have questions please <a href="/contact/">CONTACT US.</a>
             </p>
           </div>
-          <div class="right-col"><FPImageStack /></div>
+          <div class="right-col">
+            <FPImageStack />
+          </div>
         </div>
       </article>
       <article>
@@ -60,9 +62,8 @@ const pageTitle = "Royal Park Ladies Golf Club";
           <article class="fp">
             <h3>Victorian Golf League</h3>
             <p>
-              Victorian Golf League website <a href="https://www.vgl.golf/"
-                >link.</a
-              >
+              Victorian Golf League website{" "}
+              <a href="https://www.vgl.golf/">link.</a>
             </p>
             <a href="https://www.vgl.golf/">
               <Image src={fpcard1} alt="VGL" />
@@ -71,9 +72,8 @@ const pageTitle = "Royal Park Ladies Golf Club";
           <article class="fp">
             <h3>Golflink</h3>
             <p>
-              Check your handicap here. <a
-                href="https://www.golf.org.au/handicap/">Golflink</a
-              >
+              Check your handicap here.{" "}
+              <a href="https://www.golf.org.au/handicap/">Golflink</a>
             </p>
             <a href="https://www.golf.org.au/handicap/">
               <Image src={fpcard2} alt="Golflink" />
@@ -83,9 +83,8 @@ const pageTitle = "Royal Park Ladies Golf Club";
           <article class="fp">
             <h3>Royal Park Golf Course</h3>
             <p>
-              Royal Park Golf Course website <a
-                href="https://royalparkgolfcourse.ymca.org.au/">link.</a
-              >
+              Royal Park Golf Course website{" "}
+              <a href="https://royalparkgolfcourse.ymca.org.au/">link.</a>
             </p>
             <a href="https://royalparkgolfcourse.ymca.org.au/">
               <Image src={fpcard3} alt="RPGC Website" />
@@ -102,10 +101,33 @@ const pageTitle = "Royal Park Ladies Golf Club";
       display: grid;
       grid-template-rows: subgrid;
       grid-row: span 3;
+      background-color: #f8fafc;
+      border: 1px solid var(--pico-card-border-color);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+
       > a {
         align-self: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 0.75rem;
+        border-radius: var(--pico-border-radius);
       }
     }
+
+    @media (prefers-color-scheme: dark) {
+      :global(:root:not([data-theme="light"])) .fp {
+        background-color: #262e42;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    :global([data-theme="dark"]) .fp {
+      background-color: #262e42;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    }
+
     .grid {
       grid-template-rows: repeat(3, auto);
     }
